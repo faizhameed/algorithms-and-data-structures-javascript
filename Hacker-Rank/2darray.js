@@ -1,4 +1,4 @@
-Given a  2D Array, :
+/* Given a  2D Array, :
 
 1 1 1 0 0 0
 0 1 0 0 0 0
@@ -40,4 +40,22 @@ Complete the function hourglassSum in the editor below. It should return an inte
 
 hourglassSum has the following parameter(s):
 
-arr: an array of integers
+arr: an array of integers */
+
+function hourglassSum(arr) {
+  let hourGlass = [];
+  for (let a = 0; a < 4; a++) {
+    for (let b = 0; b < 4; b++) {
+      let sum =
+        arr[a][b] +
+        arr[a][b + 1] +
+        arr[a][b + 2] +
+        arr[a + 1][b + 1] +
+        arr[a + 2][b] +
+        arr[a + 2][b + 1] +
+        arr[a + 2][b + 2];
+      hourGlass = [...hourGlass, sum];
+    }
+  }
+  return Math.max(...hourGlass);
+}
