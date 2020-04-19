@@ -53,4 +53,25 @@ def binary_search(item_list,item):
 	return found
 ```
 
+## Arrays
+
+Why arrays are use full in Algorithms and DS:
+- Storing and accessing sequencial data
+- Used as a lookup in tables and inverse tables
+- Can be used to return multiple values from a function
+- Used by IO routines as a buffer
+- Used in dynamic programming to cache solutions to subproblems
+- Temporarily store data or objects
+
+### Time complexity
+
+|Array Types|Access |Search |Insertion    |Apending    | Deletion       |
+|-------------|------|------|----------|-----------|-----------|
+|Static Array|O(1)|O(n)|N/A|N/A|N/A|
+|Dynamic Array|O(1)|O(n)|O(n)|O(1)|O(n)
+
+
+
+
+
 
