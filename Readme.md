@@ -17,9 +17,10 @@ The interface dose not give any specific details about how something  should be 
 
 ## Big-O Notation
 
-It give the upper bound of complexity in the algorithm in the worst case, helping to quantify performance as input size becomes arbitrarily large
+It gives the upper bound of complexity in the algorithm in the worst case, helping to quantify performance as input size becomes arbitrarily large
 
-### Big-O Notation
+
+
 
 Constant Time:O(1)
 Logarithmic Time:O(log(n))
@@ -29,3 +30,27 @@ Quadratic Time: O(n^2)
 Cubic Time: O(n^3)
 Exponential Time: O(b^n)
 Factorial Time:O(n!)
+### Some examples to remember
+
+**Logarithmic O(log(n))**
+
+Searching algorithm in a sorted array where first takes the mid values and checks the value is greater or lesser than the given value then proceeds by creating new high value and low value
+`Binary Search in python`
+```
+def binary_search(item_list,item):
+	first = 0
+	last = len(item_list)-1
+	found = False
+	while( first<=last and not found):
+		mid = (first + last)//2
+		if item_list[mid] == item :
+			found = True
+		else:
+			if item < item_list[mid]:
+				last = mid - 1
+			else:
+				first = mid + 1	
+	return found
+```
+
+
