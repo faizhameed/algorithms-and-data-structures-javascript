@@ -272,3 +272,7 @@ myLinkedList.remove(2);
 myLinkedList.append(16);
 
 ```
+
+
+## Doubly LinkedList
+Now its similiar to linkedlist but we also have pointer to the previous node
