@@ -99,6 +99,53 @@ Why arrays are use full in Algorithms and DS:
 | Static Array  | O(1)   | O(n)   | N/A       | N/A      | N/A      |
 | Dynamic Array | O(1)   | O(n)   | O(n)      | O(1)     | O(n)     |
 
+### Hash Tables
+Objects in javascript is a type of Hash tables. In python they are dictionary
+
+**Hash Functions**
+Its a functions that returns the input in a gibrish non understandable value
+its a pure function. That always return the same value for the input given
+
+- Insert O(1)
+- Delete O(1)
+- Search O(1)
+- Lookup O(1)
+
+```
+let user ={
+	age:54,
+	name:'Kyles',
+	magic:true,
+	scream:function(){
+		console.log('Ahhhh')
+	}
+}
+```
+
+```
+user.age //O(1)
+user.spell ='abra kadabra'// now new memory is added for this //O(1)
+user.scream() //O(1)
+
+```
+### Hash Collisions
+When two items share same address space we say we have a collision
+linkedlist is formed
+with limited memory we have  collision
+
+### How to deal with hash table collisions
+ - open addressing
+ - robinhood hashing
+ refer wikipedia
+
+ with js
+ ```
+ const a  = new Map()
+ const b = new Sets()
+
+ ```
+ keys in hashtable allows us to iterate through keys
+	
 
 
 
