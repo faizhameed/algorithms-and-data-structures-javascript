@@ -2,6 +2,35 @@
 
 Its the way of organizing data such a way that it can be accessed quickly and easily 
 
+
+
+- Arrays
+- Stacks
+- Queues
+- Linked Lists
+- Trees
+- Tries
+- Graphs
+- Hash Tables
+
+### Various Operations on DS
+
+Insertion -  Adding new item in a list
+Deletion
+Traversal -  Access each data items exactly ones
+Searching - FInd the data in the collection
+Sorting 
+Access -  How do we access the data we have on the computer
+
+
+
+## Algorithms
+
+- Sorting
+- Dynamic Programming
+- BFS+DFS(Searching)
+- Recursion
+
 ### Why data structure
 
 They are essential ingredients in creating fast and powerful algorithms.
@@ -65,10 +94,10 @@ Why arrays are use full in Algorithms and DS:
 
 ### Time complexity
 
-|Array Types|Access |Search |Insertion    |Apending    | Deletion       |
-|-------------|------|------|----------|-----------|-----------|
-|Static Array|O(1)|O(n)|N/A|N/A|N/A|
-|Dynamic Array|O(1)|O(n)|O(n)|O(1)|O(n)
+| Array Types   | Access | Search | Insertion | Apending | Deletion |
+| ------------- | ------ | ------ | --------- | -------- | -------- |
+| Static Array  | O(1)   | O(n)   | N/A       | N/A      | N/A      |
+| Dynamic Array | O(1)   | O(n)   | O(n)      | O(1)     | O(n)     |
 
 
 
