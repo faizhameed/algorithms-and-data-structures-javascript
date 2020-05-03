@@ -146,8 +146,27 @@ with limited memory we have  collision
  ```
  keys in hashtable allows us to iterate through keys
 	
+## Lineked Lists
+null terminated 
+pointer stores the address
+element that links to next element
 
+**Why is linkedlist better than hashtable or Arrays**
 
+- linkedlist have a loose structure
+- in array elements are indexed, while in linkedlist you start at the head and traverse to find the node
+- linkedlist is scattered all over the memory is kind of slow
+- But to push and pop are O(1)
+- insert , delete, lookup are O(n)
+  
+	### pointers
+
+	```
+	const obj1 ={a:true}
+	const obj2 =obj1 // we created a pointer here
+	delete obj1
+	console.log(obj2)// still the element is available.because obj2 is still referencing the memory. 
+	// This is know as garbage collection
 
 
 
