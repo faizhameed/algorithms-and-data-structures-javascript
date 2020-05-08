@@ -12,6 +12,7 @@ Peek O(1)
 Pop O(1)
 look up O(n)
 
+## with LinkedList
 ```
 class Node {
   constructor(value){
@@ -67,4 +68,34 @@ myStack.pop();
 myStack.pop();
 myStack.pop();
 
+```
+## With Arrays
+```
+
+class Stack {
+  constructor(){
+    this.stackArray =[]
+  }
+  peek() {
+   return this.stackArray[this.stackArray.length-1]
+   
+  }
+  push(value){
+    this.stackArray.push(value)
+    return this
+  }
+  pop(){
+    this.stackArray.pop()
+    return this
+  }
+  //isEmpty
+}
+
+const myStack = new Stack();
+myStack.peek();
+myStack.push('google');
+myStack.push('udemy');
+myStack.push('discord');
+console.log(myStack.stackArray)
+myStack.peek();
 ```
