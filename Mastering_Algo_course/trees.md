@@ -46,3 +46,31 @@ The disadvantage of Binary search Tree is it doesnt Have O(1)
 While the advantages are better than O(n)
 Ordered
 Flexible Size
+
+**Redblack and AVL trees**
+
+## BINARY Heap
+
+Heap is a tree in which its children is less than the root
+
+or it can be children greater than the root
+
+Its is useful for things like priority queues.
+
+## **Priority Queues**
+
+Its a type of Data where each element have priority
+looKup is slow O(1)
+
+### Advantages
+
+- fast Insertion (occasional bubble up depending on the priority)
+- findMax O(1)
+- findMin O(1)
+
+## Trie
+
+A specialized tree used in searching. Most cases can outperform other DS like binary search. Usually has empty root node value
+This is what is used in to provide auto suggestions in google search, Ip routing, auto completion
+
+Space complexity - because it uses prefixes to fit the word. each work starting with N is in another node.
