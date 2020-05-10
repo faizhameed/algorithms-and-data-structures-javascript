@@ -15,3 +15,15 @@ Recursion is good when doing repeated task
 - identify the base case
 - Identify the recursive case
 - Get closer and closer and return when needed. Usually you have 2 returns inside the function
+
+There are times when you need to keep DRY
+less loops and less confused
+
+Recursion is not always the best approach
+It creates extra memory footprint
+There is high chances of stackoverflow
+
+Recursion are mainly used:
+
+- Graph traversal
+- Tree Traversal
