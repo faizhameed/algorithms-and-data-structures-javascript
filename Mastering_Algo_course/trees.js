@@ -36,6 +36,7 @@ class BinarySearchTree {
     }
   }
   lookup(value) {
+    // searching
     if (!this.root) {
       return false;
     }
