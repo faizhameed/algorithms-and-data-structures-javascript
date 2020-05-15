@@ -195,10 +195,10 @@ tree.insert(170);
 tree.insert(15);
 tree.insert(1);
 // console.log(JSON.stringify(traverse(tree.root)));
-// console.log(tree.breadthFirstSearch());
-console.log(tree.DFSInorder());
-console.log(tree.DFSPreorder());
-console.log(tree.DFSPostorder());
+console.log(tree.breadthFirstSearch());
+// console.log(tree.DFSInorder());
+// console.log(tree.DFSPreorder());
+// console.log(tree.DFSPostorder());
 
 //     9
 //  4     20
