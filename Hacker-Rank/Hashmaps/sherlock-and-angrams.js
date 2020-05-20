@@ -6,12 +6,46 @@ Constraints
 Length of the input string: 2 ≤ |s| ≤ 100
 String s contains only lowercase letters from the range ascii[a-z]. */
 
-function sherlockAndAnagrams(s) {
-  let result = [];
+const sherlockAndAnagrams=((s)=> {
+  let result = [],count=0;
   for (let i = 0; i < s.length; i++) {
     for (let j = i + 1; j < s.length + 1; j++) {
       result.push(s.slice(i, j));
     }
   }
-  console.log(result);
+  console.log(result)
+ 
+for (let k=0;k<result.length;k++){
+  for(j=k+1;j<result.length;j++){
+    if(result[k]===result[j]){
+      count++;
+     }else if(result[k].length===result[j].length){
+       console.log(`${result[k]} and ${result[j]} comparison`)
+       let isAnagram = false;
+         let temp=[...result[j]]
+       for(let m=0;m<result[k].length;m++){
+           if(temp.includes(result[k][m])){
+             console.log(`${temp} includes ${result[k][m]}`)
+             console.log(`removing ${result[k][m]} from ${temp} is index is ${temp.indexOf(result[k][m])} `)
+             temp.splice(temp.indexOf(result[k][m]),1)
+             isAnagram=true
+           }else{
+             isAnagram=false
+             break; //not found
+           }
+         
+       }
+       if(isAnagram){
+         console.log(`${result[k]} and ${result[j]} ok anagram count++`)
+         count++
+       }
+     }
+   }
 }
+console.log(count)
+
+
+})
+
+
+sherlockAndAnagrams("abba")
