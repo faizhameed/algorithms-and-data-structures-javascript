@@ -365,3 +365,4 @@ myLinkedList.append(16)
 myLinkedList.prepend(1)
 myLinkedList.insert(2, 99)
 ```
+Note please check inside folders to see more
