@@ -26,7 +26,7 @@ function merge(left, right) {
       rightIndex++;
     }
   }
-  return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
+  return [...result, ...left.slice(leftIndex), ...right.slice(rightIndex)];
 }
 
 const answer = mergeSort(numbers);
