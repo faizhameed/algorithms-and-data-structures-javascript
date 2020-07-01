@@ -35,3 +35,29 @@ useEffect(() => {
     removeEventListener("click", func());
   };
 }, []);
+
+function arrDel(arr) {
+  delete arr[2];
+  console.log(arr);
+  delete arr;
+  console.log(arr);
+}
+
+arrDel([1, 2, 3, 4, 5, 5]);
+
+function getValue(obj, str) {
+  let arrStr = str.split(".");
+
+  if (arrStr.length == 1) {
+    if (obj[arrStr[0]]) {
+      return " All keys are present";
+    }
+    return arrStr[0]; // the value is not present
+  }
+  if (obj[arrStr[0]]) {
+    let key = arrStr.shift();
+    return getValue(obj[key], arrStr.join("."));
+  } else {
+    return `${arrStr[0]} is not a key`;
+  }
+}
