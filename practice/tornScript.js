@@ -1,12 +1,16 @@
 function clickThatItem(n) {
   return function (classItem) {
+    let startDate = new Date();
     const click = setInterval(() => {
-      console.log("running");
+      let endDate = new Date();
       if (document.getElementsByClassName(classItem).length > 0) {
         document.getElementsByClassName(classItem)[0].click();
         n--;
+        startDate = new Date();
       }
-      if (n <= 0) {
+      var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+      if (n <= 0 || seconds > 5) {
+        console.log("clear interval called");
         clearInterval(click);
       }
     }, 100);
