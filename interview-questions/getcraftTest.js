@@ -8,7 +8,7 @@ const mergeSort = (arr) => {
   let mid = arr.length / 2;
   let left = arr.slice(0, mid);
   let right = arr.slice(mid);
-  debugger;
+
   // we will split the array in the middle recursively. and then sort
 
   return merge(mergeSort(left), mergeSort(right));
@@ -32,9 +32,10 @@ const merge = (left, right) => {
     tempArr.push(...right.slice(rightIndex));
     return tempArr;
   }
-  debugger;
+
   tempArr.push(...left.slice(leftIndex));
   return tempArr;
 };
 
 console.log(mergeSort(arr));
+
