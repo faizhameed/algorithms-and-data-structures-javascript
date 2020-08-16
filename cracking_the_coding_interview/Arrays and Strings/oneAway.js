@@ -24,4 +24,5 @@ function oneAway(s1, s2) {
   return true;
 }
 
-console.log(oneAway("Faiz", "fa2iz"));
+console.log(oneAway("Faiz", "fa2iz")); //false
+console.log(oneAway("Faiz", "Saiz")); // true
