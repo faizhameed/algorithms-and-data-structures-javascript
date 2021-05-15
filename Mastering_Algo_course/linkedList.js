@@ -104,3 +104,26 @@ myLinkedList.insert(20, 88);
 myLinkedList.printList();
 myLinkedList.reverse();
 // myLinkedList.printList();
+
+/* To understand the reversing and object principle */
+const nodeChe = {
+  val: 5,
+  next: {
+    value: 10,
+    next: {
+      value: 11,
+      next: null,
+    },
+  },
+};
+let head = nodeChe;
+
+let prev = null;
+let curr = nodeChe;
+while (curr) {
+  let next = curr.next;
+  curr.next = prev;
+  prev = curr;
+  curr = next;
+}
+head = curr;
