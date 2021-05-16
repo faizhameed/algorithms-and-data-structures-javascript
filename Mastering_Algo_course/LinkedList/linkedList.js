@@ -94,15 +94,20 @@ class LinkedList {
   }
 }
 
-let myLinkedList = new LinkedList(10);
+let myLinkedList = new LinkedList(1);
+myLinkedList.append(2);
+myLinkedList.append(3);
+myLinkedList.append(4);
 myLinkedList.append(5);
-myLinkedList.append(16);
-myLinkedList.prepend(1);
-myLinkedList.insert(2, 99);
-myLinkedList.insert(2, 23);
-myLinkedList.insert(20, 88);
+myLinkedList.append(6);
+myLinkedList.append(7);
+// myLinkedList.prepend(1);
+// myLinkedList.insert(2, 99);
+// myLinkedList.insert(2, 23);
+// myLinkedList.insert(20, 88);
 myLinkedList.printList();
-myLinkedList.reverse();
+// myLinkedList.reverse();
+// myLinkedList.printList();
 // myLinkedList.printList();
 
 /* To understand the reversing and object principle */
