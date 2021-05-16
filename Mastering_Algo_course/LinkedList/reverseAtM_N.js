@@ -1,3 +1,20 @@
+// generate a linkedlist
+const myGenLL = [7, 6, 5, 4, 3, 2, 1].reduce(
+  (acc, val) => ({
+    value: val,
+    next: acc,
+  }),
+  null
+);
+
+const printList = (head) => {
+  if (!head) {
+    return null;
+  }
+  console.log(head.value);
+  printList(head.next);
+};
+
 function reverseAtMandN(linkedList, m, n) {
   // 1->2->3->4->5->6->7 , 2,5
   let startPoint = linkedList,
