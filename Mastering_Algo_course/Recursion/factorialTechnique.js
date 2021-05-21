@@ -15,5 +15,5 @@ const tailFactorial = (x, totalSoFar = 1) => {
   return tailFactorial(x - 1, totalSoFar * x);
 };
 
-console.log(recFactorial(4));
 console.log(tailFactorial(4));
+console.log(recFactorial(4));
