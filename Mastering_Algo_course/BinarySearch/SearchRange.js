@@ -37,9 +37,27 @@ const searchRange = (nums, target) => {
 };
 
 console.log(searchRange([1, 2, 3, 3, 5, 6, 7, 7], 7));
+/* Runtime: 76 ms, faster than 83.70% of JavaScript online submissions for Find First and Last Position of Element in Sorted Array.
+Memory Usage: 39.6 MB, less than 65.78% of JavaScript online submissions for Find First and Last Position of Element in Sorted Array. */
 
 /* Solution 2 */
 
+const binarySearch = (nums, left, right, target) => {
+    while (left <= right) {
+      const mid = Math.floor((left + right) / 2);
+      const foundVal = nums[mid];
+      if (foundVal === target) {
+        return mid;
+      } else if (foundVal < target) {
+        left = mid + 1;
+      } else {
+        right = mid - 1;
+      }
+    }
+  
+    return -1;
+  };
+  
 const searchRange2 = (nums, target) => {
   if (nums.length === 0) {
     return [-1, -1];
@@ -64,3 +82,6 @@ const searchRange2 = (nums, target) => {
 
   return [startPos, endPos];
 };
+
+/* Runtime: 76 ms, faster than 83.70% of JavaScript online submissions for Find First and Last Position of Element in Sorted Array.
+Memory Usage: 39.6 MB, less than 65.78% of JavaScript online submissions for Find First and Last Position of Element in Sorted Array. */
