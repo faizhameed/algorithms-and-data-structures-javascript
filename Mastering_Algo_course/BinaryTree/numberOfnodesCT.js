@@ -1,45 +1,54 @@
-/* Find number of nodes in a complete binary tree
--> in a complete binary tree the number of nodes except the last level 2^(h-1) -1 where h is the height
--> find a method to find number of elements in last level
-*/
-const heightCBT = (root, h) => {
-  if (!root) return h;
-  return heightCBT(root.left, h + 1);
+const getTreeHeight = function (root) {
+  let height = 0;
+  while (root.left !== null) {
+    height++;
+    root = root.left;
+  }
+
+  return height;
 };
 
-const isNodeExists = (idxTofind, height, node) => {
+const nodeExists = function (idxToFind, height, node) {
   let left = 0,
-    right = 2 ** height - 1,
+    right = Math.pow(2, height) - 1,
     count = 0;
 
   while (count < height) {
-    const mid = Math.ceil((left + right) / 2);
-    if (mid <= idxTofind) {
+    const midOfNode = Math.ceil((left + right) / 2);
+
+    if (idxToFind >= midOfNode) {
       node = node.right;
-      left = mid;
+      left = midOfNode;
     } else {
       node = node.left;
-      right = mid - 1;
+      right = midOfNode - 1;
     }
+
     count++;
   }
 
   return node !== null;
 };
 
-const numberOfNodesCBT = (root) => {
+const countNodes = function (root) {
   if (!root) return 0;
-  const height = heightCBT(root);
+
+  const height = getTreeHeight(root);
+
   if (height === 0) return 1;
-  const upperCount = 2 ** height;
+
+  const upperCount = Math.pow(2, height) - 1;
+
   let left = 0,
     right = upperCount;
+
   while (left < right) {
-    let indexTofind = Math.ceil((left + right) / 2);
-    if (isNodeExists(root, indexTofind, height)) {
-      left = indexTofind + 1;
+    const idxToFind = Math.ceil((left + right) / 2);
+
+    if (nodeExists(idxToFind, height, root)) {
+      left = idxToFind;
     } else {
-      right = indexTofind - 1;
+      right = idxToFind - 1;
     }
   }
 
