@@ -20,4 +20,13 @@ class PriorityQueue {
   peek() {
     return this._heap[0];
   }
+  _parent(idx) {
+    return Math.floor((idx - 1) / 2);
+  }
+  _leftChild(idx) {
+    return idx * 2 + 1;
+  }
+  _rightChild(idx) {
+    return idx * 2 + 2;
+  }
 }
