@@ -29,4 +29,12 @@ class PriorityQueue {
   _rightChild(idx) {
     return idx * 2 + 2;
   }
+  _swap(i, j) {
+    const temp = this._heap[i];
+    this._heap[i] = this._heap[j];
+    this._heap[j] = temp;
+  }
+  _compare(i, j) {
+    return this._comparator(this._heap[i], this._heap[j]);
+  }
 }
