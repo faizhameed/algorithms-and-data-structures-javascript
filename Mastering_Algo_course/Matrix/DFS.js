@@ -12,6 +12,7 @@ const traverse = (matrix) => {
   const values = [];
 
   dfs(matrix, 0, 0, seen, values);
+  return values;
 };
 
 const dfs = (matrix, row, col, seen, values) => {
