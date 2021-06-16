@@ -9,12 +9,11 @@ var WallsAndGates = function (grid) {
   ];
   const WALL = -1;
   const GATE = 0;
-  const gatesPos = [];
   if (grid.length === 0 || grid.length === 1) return grid;
   for (let row = 0; row < grid.length; row++) {
     for (let col = 0; col < grid[0].length; col++) {
       if (grid[row][col] === GATE) {
-        gatesPos.push([row, col]);
+        bfs([row, col]);
       }
     }
   }
@@ -45,8 +44,22 @@ var WallsAndGates = function (grid) {
       }
     }
   };
-  for (let i = 0; i < gatesPos.length; i++) {
-    bfs(gatesPos[i]);
-  }
   return grid;
+};
+
+/* DFS alternative */
+const dfs = (grid, row, col, count) => {
+  if (
+    row < 0 ||
+    row >= grid.length ||
+    col < 0 ||
+    col >= grid[0].length ||
+    count > grid[row][col]
+  )
+    return;
+  grid[row][col] = count;
+  for (let i = 0; i < directions.length; i++) {
+    const currentDir = directions[i];
+    dfs(grid, row + currentDir[0], col + currentDir[1], count + 1);
+  }
 };
