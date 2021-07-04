@@ -2,7 +2,7 @@
 n number of employees
 
 */
-const numOFMinutes = (n, head1D, managers, informTime) => {
+const numOFMinutes = (n, headID, managers, informTime) => {
   const adjList = managers.map(() => []);
   for (let i = 0; i < n; i++) {
     const manager = managers[i];
@@ -10,7 +10,7 @@ const numOFMinutes = (n, head1D, managers, informTime) => {
     adjList[manager].push(i);
   }
   // now we get list of employees under each manager if there is no employee under any employee we have empty array at that index
-  return dfs(head1D, adjList, informTime);
+  return dfs(headID, adjList, informTime);
 };
 
 const dfs = (currentID, adjList, informTime) => {
