@@ -27,3 +27,8 @@ function canFinish(numCourses, prerequisites) {
   }
   return true;
 }
+
+/* Topological sort, best method 
+Directed Acyclic Graph- there should not be any cycle
+topological sort is only able to take values whose indegree value is one
+*/
