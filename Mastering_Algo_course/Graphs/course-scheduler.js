@@ -32,3 +32,36 @@ function canFinish(numCourses, prerequisites) {
 Directed Acyclic Graph- there should not be any cycle
 topological sort is only able to take values whose indegree value is one
 */
+
+const canFinish2 = (n, prerequisites) => {
+  const inDegree = new Array(n).fill(0);
+  const adjList = inDegree.map(() => []);
+
+  for (let i = 0; i < prerequisites.length; i++) {
+    const pair = prerequisites[i];
+    inDegree[pair[0]]++;
+    adjList[pair[1]].push(pair[0]);
+  }
+  // we need some kind of datastructure to know which vertex is having zero so that we take that
+  const stack = [];
+  for (let i = 0; i < inDegree.length; i++) {
+    if (inDegree[i] === 0) {
+      stack.push(i);
+    }
+  }
+
+  let count = 0;
+  while (stack.length) {
+    const current = stack.pop();
+    count++;
+    const adj = adjList[current];
+    for (let i = 0; i < adj.length; i++) {
+      const next = adj[i];
+      inDegree[next]--;
+      if (inDegree[next] === 0) {
+        stack.push(next);
+      }
+    }
+  }
+  return count === n;
+};
