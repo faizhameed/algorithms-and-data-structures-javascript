@@ -40,9 +40,9 @@ const canFinish2 = (n, prerequisites) => {
   for (let i = 0; i < prerequisites.length; i++) {
     const pair = prerequisites[i];
     inDegree[pair[0]]++;
-    adjList[pair[1]].push(pair[0]); // we are pushing the re
+    adjList[pair[1]].push(pair[0]);
   }
-  // we need some kind of datasctructure to know which vertex is having zero so that we take that
+  // we need some kind of datastructure to know which vertex is having zero so that we take that
   const stack = [];
   for (let i = 0; i < inDegree.length; i++) {
     if (inDegree[i] === 0) {
