@@ -367,4 +367,3 @@ Note please check inside folders to see more
 
 Connect with me  at [LinkedIn](https://), Twitter
 
-My Website
