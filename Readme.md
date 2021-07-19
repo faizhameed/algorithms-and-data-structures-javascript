@@ -89,8 +89,9 @@ Why arrays are use full in Algorithms and DS:
 
 ### Time complexity
 
+
 | Array Types   | Access | Search | Insertion | Apending | Deletion |
-| ------------- | ------ | ------ | --------- | -------- | -------- |
+| --------------- | -------- | -------- | ----------- | ---------- | ---------- |
 | Static Array  | O(1)   | O(n)   | N/A       | N/A      | N/A      |
 | Dynamic Array | O(1)   | O(n)   | O(n)      | O(1)     | O(n)     |
 
@@ -161,19 +162,17 @@ element that links to next element
 - But to push and pop are O(1)
 - insert , delete, lookup are O(n)
 
-      ### pointers
+  ### pointers
 
-      ```
-      const obj1 ={a:true}
-      const obj2 =obj1 // we created a pointer here
-      delete obj1
-      console.log(obj2)// still the element is available.because obj2 is still referencing the memory.
-      // This is know as garbage collection
+  ```
+  const obj1 ={a:true}
+  const obj2 =obj1 // we created a pointer here
+  delete obj1
+  console.log(obj2)// still the element is available.because obj2 is still referencing the memory.
+  // This is know as garbage collection
 
-      ```
-
+  ```
   **Building a linkedlist in js**
-
 ```
 //10-->5-->16
 // example
@@ -276,7 +275,6 @@ myLinkedList.remove(2);
 myLinkedList.append(16);
 
 ```
-
 ## Doubly LinkedList
 
 Now its similar to linkedlist but we also have pointer to the previous node
@@ -366,3 +364,6 @@ myLinkedList.prepend(1)
 myLinkedList.insert(2, 99)
 ```
 Note please check inside folders to see more
+
+Connect with me  at [LinkedIn](https://), Twitter
+
