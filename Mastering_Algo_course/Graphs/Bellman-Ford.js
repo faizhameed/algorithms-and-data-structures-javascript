@@ -1,5 +1,9 @@
-/* 
+/* Unlike Dijasktra's Bellman ford algorithm can handle -ve weight
+Building entire space tree then get the smallest path
+here we utilize dynamic program to calculate and store the common path that have been done already
 if negative weights are considered, we consider belman ford
+if there is negative cycle we dont have a proper answer for this
+
 */
 
 const networkDelayTime = (times, n, k) => {
