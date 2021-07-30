@@ -5,21 +5,6 @@ Add the two numbers and return the sum as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 https://leetcode.com/problems/add-two-numbers/
 */
-const reverseALinkedList = (ln) => {
-  //   const current = ln.next;
-  //   ln.next =null
-  let current = ln.next;
-  let prev = ln;
-  let tail = ln;
-  while (current) {
-    let second = current.next;
-    current.next = prev;
-    prev = current;
-    current = second;
-  }
-  tail.next = null;
-  return prev;
-};
 var addTwoNumbers = function (l1, l2) {
   let carry = 0;
   let v1;
