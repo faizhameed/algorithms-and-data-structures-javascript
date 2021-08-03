@@ -6,7 +6,7 @@ we are trying to figure min cost from the start of the staircase to the end
 if(index===0||index===1)return cost[index]
 if(index<0)return 0
 */
-
+/* Recursive Approach */
 const minCostClimbingStair = (cost) => {
   const store = {};
   const getMinCost = (i) => {
@@ -24,11 +24,24 @@ const minCostClimbingStair = (cost) => {
   };
   return getMinCost(cost.length);
 };
+/* Iterative method */
+const minCostClimbingStair2 = (cost) => {
+  const store = {};
+  store[0] = cost[0];
+  store[1] = cost[1];
+  for (let i = 2; i <= cost.length; i++) {
+    const val = isNaN(cost[i]) ? 0 : cost[i];
+    const temp = store[1];
+    store[1] = val + Math.min(store[0], store[1]);
+    store[0] = temp;
+  }
+  return store[1];
+};
 
-console.log(minCostClimbingStair([7, 3, 4, 5, 6]));
-console.log(minCostClimbingStair([1, 100, 1, 1, 1, 100, 1, 1, 100, 1]));
+console.log(minCostClimbingStair2([7, 3, 4, 5, 6]));
+console.log(minCostClimbingStair2([1, 100, 1, 1, 1, 100, 1, 1, 100, 1]));
 console.log(
-  minCostClimbingStair([
+  minCostClimbingStair2([
     841, 462, 566, 398, 243, 248, 238, 650, 989, 576, 361, 126, 334, 729, 446,
     897, 953, 38, 195, 679, 65, 707, 196, 705, 569, 275, 259, 872, 630, 965,
     978, 109, 56, 523, 851, 887, 91, 544, 598, 963, 305, 481, 959, 560, 454,
