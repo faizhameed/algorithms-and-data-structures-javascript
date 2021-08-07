@@ -24,7 +24,7 @@ const minCostClimbingStair = (cost) => {
   };
   return getMinCost(cost.length);
 };
-/* Iterative method */
+/* Iterative method Best method*/
 const minCostClimbingStair2 = (cost) => {
   const store = {};
   store[0] = cost[0];
