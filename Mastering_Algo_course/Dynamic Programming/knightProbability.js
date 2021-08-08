@@ -31,8 +31,7 @@ console.log(knightP(4, 3, 2, 2));
 const knightProbability = (N, k, r, c) => {
   const dp = new Array(k + 1)
     .fill(0)
-    .map(() => new Array(N).fill(0))
-    .map(() => new Array(N).fill(undefined));
+    .map(() => new Array(N).fill(0).map(() => new Array(N).fill(undefined)));
   return recurse(N, k, r, c, dp);
 };
 
@@ -51,4 +50,64 @@ const recurse = function (N, k, r, c, dp) {
   }
   dp[k][r][c] = res;
   return dp[k][r][c];
+};
+
+/* Bottom up solution */
+const knightProbability = function (N, k, r, c) {
+  const dp = new Array(k + 1)
+    .fill(0)
+    .map(() => new Array(N).fill(0).map(() => new Array(N).fill(0)));
+  dp[0][r][c] = 1;
+  for (let step = 1; step <= k; step++) {
+    for (let row = 0; row < N; row++) {
+      for (let col = 0; col < N; col++) {
+        for (let i = 0; i < DIRECTIONS.length; i++) {
+          const dir = DIRECTIONS[i];
+          const preRow = row + dir[0];
+          const preCol = col + dir[1];
+          if (preRow >= 0 && preRow < N && preCol >= 0 && preRow < N) {
+            dp[step][row][col] += dp[step - 1][preRow][preCol] / 8;
+          }
+        }
+      }
+    }
+  }
+  let res = 0;
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      res += dp[k][i][j];
+    }
+  }
+  return res;
+};
+
+/* Optimizing DP by storing prev Row and Pre Col */
+
+const knightProbability = function (n, k, r, c) {
+  const prevDp = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  const currDP = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  prevDp[0][r][c] = 1;
+  for (let step = 1; step <= k; step++) {
+    for (let row = 0; row < n; row++) {
+      for (let col = 0; col < n; col++) {
+        for (let i = 0; i < DIRECTIONS.length; i++) {
+          const dir = DIRECTIONS[i];
+          const preRow = row + dir[0];
+          const preCol = col + dir[1];
+          if (preRow >= 0 && preRow < n && preCol >= 0 && preRow < n) {
+            currDP[row][col] += prevDp[preRow][preCol] / 8;
+          }
+        }
+      }
+    }
+    prevDp = currDP;
+    currDP = new Array(n).fill(0).map(() => new Array(n).fill(0));
+  }
+  let res = 0;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      res += prevDp[i][j];
+    }
+  }
+  return res;
 };
