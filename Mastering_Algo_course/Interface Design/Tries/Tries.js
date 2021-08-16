@@ -1,5 +1,6 @@
 /* There is some type of assosicated value which helps you uinderstand 
-S(N)
+
+Space = O(N)
 T = O(L)
 */
 class TrieNode {
