@@ -17,8 +17,15 @@
 //   return maxCount;
 // };
 
-const longestCommonSubsequence = (t1, t2) => {
-  const dp = [...Array(t1.length + 1)].map(() => Array(t2.length + 1).fill(0));
-  console.log(dp);
+const lsc = (t1, t2, m, n) => {
+  // long brute method
+
+  if (m === 0 || n === 0) {
+    return 0;
+  }
+  if (t1[m - 1] === t2[n - 1]) {
+    return 1 + lsc(t1, t2, m - 1, n - 1);
+  }
+  return Math.max(lsc(t1, t2, m - 1, n), lsc(t1, t2, m, n - 1));
 };
-longestCommonSubsequence("abc", "decs");
+console.log(lsc("abc", "abs", 3, 4));
