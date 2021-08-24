@@ -13,4 +13,23 @@ const maxArea = function (height) {
   return maxArea;
 };
 
-console.log(maxArea([4, 3, 2, 1, 4]));
+const maxArea2 = function (height) {
+  //Optimized solution
+  let maxArea = 0;
+  let i = 0,
+    j = height.length - 1;
+  while (i < j) {
+    const left = height[i];
+    const right = height[j];
+
+    maxArea = Math.max(maxArea, (j - i) * Math.min(left, right));
+    if (left < right) {
+      i++;
+    } else {
+      j--;
+    }
+  }
+  return maxArea;
+};
+
+console.log(maxArea2([4, 3, 2, 1, 4]));
