@@ -18,17 +18,18 @@ var lengthOfLongestSubstringOptimized = function (s) {
   let left = 0,
     right = 0,
     longest = 0;
-  const seen = {};
+  const seen = new Map();
   while (right < s.length) {
-    if (seen[s[right]] >= 0 && seen[s[right]] >= left) {
+    currentChar = s[right];
+    if (seen.get(currentChar) >= 0 && seen.get(currentChar) >= left) {
       // and is this before left?
-      left = seen[s[right]] + 1; // now we can ignore everything that was before
+      left = seen.get(currentChar) + 1; // now we can ignore everything that was before
     }
-    seen[s[right]] = right;
+    seen.set(currentChar, right);
     longest = Math.max(right - left + 1, longest);
     right++;
   }
   return longest;
 };
 
-console.log(lengthOfLongestSubstringOptimized("ab"));
+console.log(lengthOfLongestSubstringOptimized("abcasd"));
