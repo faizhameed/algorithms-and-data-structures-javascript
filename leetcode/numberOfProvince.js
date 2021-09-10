@@ -1,4 +1,4 @@
-https://leetcode.com/problems/number-of-provinces/submissions/
+https://leetcode.com/problems/number-of-provinces/
 
 
 const findCircleNum = (isConnected) => {
