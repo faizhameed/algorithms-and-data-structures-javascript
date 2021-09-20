@@ -11,6 +11,17 @@ var removeDuplicates = function (nums) {
   return nums;
 };
 
+const removeElement = function (nums, val) {
+  let i;
+  for (i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      nums.splice(i, 1);
+      i--;
+    }
+  }
+  return nums;
+};
+
 console.log(
-  removeDuplicates([1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5])
+  removeElement([1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5], 3)
 );
