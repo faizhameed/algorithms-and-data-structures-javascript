@@ -21,7 +21,29 @@ function substrings(str1) {
       combi.push(temp);
     }
   }
+  combi.unshift("");
   return combi;
 }
+
+var maxLength = function (arr) {
+  // Initialize results with an empty string
+  // from which to build all future results
+  let results = [""];
+  for (let word of arr) {
+    // We only want to iterate through results
+    // that existed prior to this loop
+    let resultsLen = results.length;
+    for (let i = 0; i < resultsLen; i++) {
+      // Form a new result combination and
+      // use a set to check for duplicate characters
+      let newRes = results[i] + word;
+      // Add valid options to results and
+      // keep track of the longest so far
+      results.push(newRes);
+    }
+  }
+  return results;
+};
+console.log(maxLength("faiz"));
 
 console.log(substrings("faiz"));
