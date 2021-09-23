@@ -35,10 +35,7 @@ var maxLength = function (arr) {
     let resultsLen = results.length;
     for (let i = 0; i < resultsLen; i++) {
       // Form a new result combination and
-      // use a set to check for duplicate characters
       let newRes = results[i] + word;
-      // Add valid options to results and
-      // keep track of the longest so far
       results.push(newRes);
     }
   }
