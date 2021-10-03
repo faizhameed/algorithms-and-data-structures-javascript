@@ -5,7 +5,7 @@
 var combine = function (n, k, index = 1, curr = [], paths = []) {
   if (curr.length === k) {
     paths.push(curr);
-    return paths;
+    return;
   }
 
   for (let i = index; i <= n; i++) {
