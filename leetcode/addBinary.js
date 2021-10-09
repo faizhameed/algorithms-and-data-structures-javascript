@@ -40,5 +40,4 @@ function addBinary(a, b) {
 
   return sumArr.reverse().join("");
 }
-let s = "123";
 console.log(addBinary("11110", "110"));
