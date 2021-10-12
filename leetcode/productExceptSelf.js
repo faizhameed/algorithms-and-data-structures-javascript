@@ -20,6 +20,28 @@ const productExceptSelf = (nums) => {
   return res;
 };
 
+/*  2nd approach to make it o(1) space complexity we can now make the left array as a result array and then add to res when running backwards */
+
+const productExceptSelf2 = (nums) => {
+  const n = nums.length;
+  const res = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (i === 0) {
+      res.push(1);
+    } else {
+      res.push(res[i - 1] * nums[i - 1]);
+    }
+  }
+  let i = n - 2,
+    prev = 1;
+  while (i >= 0) {
+    res[i] = res[i] * nums[i + 1] * prev;
+    prev = nums[i + 1] * prev;
+    i--;
+  }
+  return res;
+};
+
 const nums = [1, 2, 3, 4];
 
-console.log(productExceptSelf(nums));
+console.log(productExceptSelf2(nums));
