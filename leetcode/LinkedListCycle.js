@@ -1,10 +1,10 @@
 var hasCycle = function (head) {
-  if (!head) return null;
+  if (!head) return false;
 
   let tortoise = head;
   let hare = head;
 
-  while (hare) {
+  while (hare.next && hare.next.next) {
     hare = hare.next.next;
     tortoise = tortoise.next;
     if (hare === tortoise) {
