@@ -102,4 +102,4 @@ function getDecimalValueOf(b) {
   return DecimalVal;
 }
 
-console.log(letterCasePermutation("fa2iz"));
+console.log(permute("fiz"));
