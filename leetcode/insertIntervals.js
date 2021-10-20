@@ -3,48 +3,51 @@ var insert = function (intervals, newInterval) {
     intervals.push(newInterval);
     return intervals;
   }
-  let minFound = false,
-    maxFound = false;
+  let isNewPushed = false;
   const result = [];
+  function mergeInterval(newInterval) {
+    if (!result.length) {
+      result.push(newInterval);
+    } else {
+      const lastMin = result[result.length - 1][0];
+      const lastMax = result[result.length - 1][1];
+      if (lastMax < newInterval[0]) {
+        result.push(newInterval);
+      } else {
+        const min = Math.min(newInterval[0], lastMin);
+        const max = Math.max(newInterval[1], lastMax);
+        result[result.length - 1] = [min, max];
+      }
+    }
+  }
   for (let i = 0; i < intervals.length; i++) {
     const newMin = newInterval[0];
-    const newMax = newInterval[1];
-    const minCurr = intervals[i][0];
-    const maxCurr = intervals[i][1];
-    if (newMin > maxCurr) {
+    const currMin = intervals[i][0];
+    if (currMin < newMin) {
       result.push(intervals[i]);
-    } else if (!minFound) {
-      newInterval[i][0] = Math.min(minCurr, newMin);
-      minFound = true;
+    } else if (newMin <= currMin && !isNewPushed) {
+      mergeInterval(newInterval);
+      isNewPushed = true;
       i--;
-    } else if (newMax <= maxCurr && !maxFound) {
-      maxFound = true;
-      newInterval[1] = intervals[i][1];
-      result.push(newInterval);
-    } else if (
-      newMax > intervals[i][1] &&
-      newMax < intervals[i + 1][0] &&
-      !maxFound
-    ) {
-      maxFound = true;
-      result.push(newInterval);
-    } else if (minCurr >= newMin && maxCurr <= newMax) {
-      continue;
     } else {
-      result.push(intervals[i]);
+      mergeInterval(intervals[i]);
     }
+  }
+  if (!isNewPushed) {
+    mergeInterval(newInterval);
   }
 
   return result;
 };
 
-const intervals = [
-    [1, 2],
-    [3, 5],
-    [6, 7],
-    [8, 10],
-    [12, 16],
-  ],
-  newInterval = [4, 8];
+const intervals = [[1, 5]],
+  newInterval = [2, 7];
+
+/* 
+  failing 
+  -3,0
+  [17,23]
+  [6,7]
+  */
 
 console.log(insert(intervals, newInterval));
