@@ -51,7 +51,24 @@ Quadratic Time: O(n^2)
 Cubic Time: O(n^3)
 Exponential Time: O(b^n)
 Factorial Time:O(n!)
-
+# How to practice solving Algorithmic Problems
+1. What are the properties of the problem that lead it to be solved by a particular method?
+2. What kinds of restrictions are placed on the problem? Restrictions on input?
+3. Is this a problem I have seen before? If not, can it be turned into a problem I have seen? Think hard here. If not can an input be transformed which reveals something about the problem? Have you tried special inputs and edge cases?
+4. What kinds of techniques solve problems that are similar to my problem?
+5. Do I understand what the problem is? Try rewording it.
+6. When I solved other problems, have I proved that the solution is correct? Why is it correct? Am I sure it is correct or did I just pass the OJ?
+7. Can a problem be broken into parts where each part can be solved independently?
+8. How does the output change when the input changes? Is there a relationship?
+9. Is this a problem better solved a graph problem? As a matrix problem? As a dp problem? etc.
+10. Can I generalize the problem such that what I am solving is just a specialized version of some other generalized problem?
+11. Can you find a pattern in a class of problems? What about other kinds of patterns?
+12. Have you tried treating a geometric problem algebraically and vice versa?
+13. Are the any interesting theorems that can help you?
+14. What if you change a problem around such that now it is solvable? Now how can you work what you have removed from the problem back in and see what you can do now to solve it?
+15. Maybe you are using poor notation? Is another kind of notation of help?
+16. What if you work backwards? Assume a solution, what should be the input?
+17. Can you exploit things like symmetry?
 ### Some examples to remember
 
 **Logarithmic O(log(n))**
