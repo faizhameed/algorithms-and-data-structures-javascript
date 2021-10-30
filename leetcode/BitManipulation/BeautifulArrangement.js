@@ -24,13 +24,4 @@ function permute(n, res = [], curr = []) {
   return res;
 }
 
-function isBeautiful(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if ((i + 1) % arr[i] !== 0 && arr[i] % (i + 1) !== 0) return false;
-  }
-  return true;
-}
-
 console.log(countArrangement(11));
-
-// console.log(isBeautiful([3, 2, 1]));
