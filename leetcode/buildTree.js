@@ -32,7 +32,7 @@ var buildTree = function (postorder, inorder) {
     }
     const root = new TreeNode(postorder.pop());
 
-    mid = map_inorder[root.val];
+    const mid = map_inorder[root.val];
     root.right = build(mid + 1, right);
     root.left = build(left, mid - 1);
     return root;
