@@ -52,7 +52,7 @@ var lengthOfLIS = function (nums) {
     }
   }
 
-  return sub;
+  return sub.length;
 };
 
 console.log(lengthOfLIS([4, 10, 4, 3, 8, 9]));
