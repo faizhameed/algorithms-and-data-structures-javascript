@@ -1,13 +1,13 @@
 var sumNumbers = function (root) {
   let arrSum = 0;
 
-  function dfs(root, curr = "") {
+  function dfs(root, curr = 0) {
     if (!root) {
       return;
     }
-    curr += root.val;
+    curr = curr * 10 + root.val;
     if (!root.right && !root.left) {
-      arrSum += parseInt(curr);
+      arrSum += curr;
       return;
     }
 
