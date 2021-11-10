@@ -14,6 +14,7 @@ var reorderList = function (head) {
   slow = slow.next;
   temp.next = null; // we are cutting off at the middle
   if (slow === null) {
+    // if there is no slow
     return;
   }
   /* 
@@ -37,8 +38,8 @@ now we need to reverse the 2nd half of the linkedlist
 
   let l1 = head,
     l2 = first;
-  // now we are merging both
-  while (l2 != null) {
+  // now we are merging both linkedlist
+  while (l2 !== null) {
     let temp = l1.next;
     l1.next = l2;
     l1 = temp;
