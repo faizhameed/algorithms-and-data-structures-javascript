@@ -36,17 +36,25 @@ WordDictionary.prototype.addWord = function (word) {
  * @return {boolean}
  */
 WordDictionary.prototype.search = function (word) {
-  let curr = this.root;
-  for (let i = 0; i < word.length; i++) {
-    if (!curr[word[i]]) {
-      return false;
+  function search_in_word(word, curr = this.root) {
+    for (let i = 0; i < word.length; i++) {
+      const ch = word[i];
+      if (!curr[ch]) {
+        if (ch === ".") {
+          for (const x of Object.keys(curr)) {
+            if (search_in_word(word.slice(i + 1), curr[x])) {
+              return true;
+            }
+          }
+        }
+        return false;
+      } else {
+        curr = curr[ch];
+      }
     }
-    curr = curr[word[i]];
+    return !!curr.end;
   }
-  if (curr.end) {
-    return true;
-  }
-  return false;
+  return search_in_word(word, this.root);
 };
 
 /**
@@ -60,9 +68,9 @@ WordDictionary.prototype.print = function () {
 };
 
 var obj = new WordDictionary();
-obj.addWord("hello");
-obj.addWord("bad");
+obj.addWord("at");
+obj.addWord("and");
 
 obj.print();
 
-console.log(obj.search("bad"));
+console.log(obj.search("a."));
