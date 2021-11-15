@@ -62,3 +62,72 @@ q.enqueue(4);
 q.enqueue(5);
 
 console.log(q.peek());
+
+/* Alternative Method */
+
+/**
+ * @param {number} k
+ */
+
+class MyCircularQueue {
+  constructor(k) {
+    this.root = null;
+    this.tail = null;
+    this.max = k;
+    this.length = 0;
+  }
+
+  enQueue(val) {
+    if (this.length === this.max) {
+      return false;
+    }
+    const newNode = new Node(val);
+    if (!this.root) {
+      this.root = newNode;
+      this.tail = newNode;
+    }
+    newNode.prev = this.tail;
+    this.tail.next = newNode;
+    this.tail = newNode;
+    this.length++;
+    return true;
+  }
+  deQueue() {
+    if (this.length === 0) {
+      return false;
+    }
+    const remNode = this.root;
+    if (this.length === 1) {
+      this.root = null;
+      this.tail = null;
+    } else {
+      this.root = this.root.next;
+      this.root.prev = null;
+      remNode.next = null;
+    }
+    this.length--;
+    return true;
+  }
+
+  Front() {
+    return this.root ? this.root.val : -1;
+  }
+
+  Rear() {
+    return this.tail ? this.tail.val : -1;
+  }
+  isEmpty() {
+    return this.length === 0;
+  }
+  isFull() {
+    return this.max === this.length;
+  }
+}
+
+var obj = new MyCircularQueue(5);
+var param_1 = obj.enQueue(3);
+var param_2 = obj.deQueue();
+var param_3 = obj.Front();
+var param_4 = obj.Rear();
+var param_5 = obj.isEmpty();
+var param_6 = obj.isFull();
