@@ -31,5 +31,33 @@ var numSquares = function (n) {
   return minNumSquares(n);
 };
 
-console.log(numSquares(66));
-// how to optimize this
+console.log(numSquaresGreedy(66));
+
+// Greedy Algorithm
+
+function numSquaresGreedy(n) {
+  const squares = [];
+  for (let i = 1; i < Math.sqrt(n) + 1; i++) {
+    squares.push(i ** 2);
+  }
+
+  function is_divided_by(n, count) {
+    if (count === 1) {
+      //if k includes in square nuems
+      return squares.includes(n);
+    }
+
+    for (const k of squares) {
+      if (is_divided_by(n - k, count - 1)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  for (let count = 1; count < n + 1; count++) {
+    if (is_divided_by(n, count)) {
+      return count;
+    }
+  }
+}
