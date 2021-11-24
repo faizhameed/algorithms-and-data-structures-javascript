@@ -51,7 +51,9 @@ Quadratic Time: O(n^2)
 Cubic Time: O(n^3)
 Exponential Time: O(b^n)
 Factorial Time:O(n!)
+
 # How to practice solving Algorithmic Problems
+
 1. What are the properties of the problem that lead it to be solved by a particular method?
 2. What kinds of restrictions are placed on the problem? Restrictions on input?
 3. Is this a problem I have seen before? If not, can it be turned into a problem I have seen? Think hard here. If not can an input be transformed which reveals something about the problem? Have you tried special inputs and edge cases?
@@ -69,6 +71,7 @@ Factorial Time:O(n!)
 15. Maybe you are using poor notation? Is another kind of notation of help?
 16. What if you work backwards? Assume a solution, what should be the input?
 17. Can you exploit things like symmetry?
+
 ### Some examples to remember
 
 **Logarithmic O(log(n))**
@@ -106,9 +109,8 @@ Why arrays are use full in Algorithms and DS:
 
 ### Time complexity
 
-
 | Array Types   | Access | Search | Insertion | Apending | Deletion |
-| --------------- | -------- | -------- | ----------- | ---------- | ---------- |
+| ------------- | ------ | ------ | --------- | -------- | -------- |
 | Static Array  | O(1)   | O(n)   | N/A       | N/A      | N/A      |
 | Dynamic Array | O(1)   | O(n)   | O(n)      | O(1)     | O(n)     |
 
@@ -189,7 +191,9 @@ element that links to next element
   // This is know as garbage collection
 
   ```
+
   **Building a linkedlist in js**
+
 ```
 //10-->5-->16
 // example
@@ -292,6 +296,7 @@ myLinkedList.remove(2);
 myLinkedList.append(16);
 
 ```
+
 ## Doubly LinkedList
 
 Now its similar to linkedlist but we also have pointer to the previous node
@@ -380,7 +385,7 @@ myLinkedList.append(16)
 myLinkedList.prepend(1)
 myLinkedList.insert(2, 99)
 ```
+
 Note please check inside folders to see more
 
-Connect with me  at [LinkedIn](https://), Twitter
-
+Connect with me at [LinkedIn](https://)
