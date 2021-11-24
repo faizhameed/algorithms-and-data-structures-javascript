@@ -2,7 +2,6 @@
 
 var dailyTemperaturesBrute = function (temperatures) {
   // brute force
-
   const ans = [];
 
   for (let i = 0; i < temperatures.length; i++) {
