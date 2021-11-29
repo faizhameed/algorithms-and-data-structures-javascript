@@ -1,18 +1,22 @@
 var decodeString = function (s) {
-  let stack = [],
-    isStore = false,
-    temp = [];
+  const stack = [];
+  let isStore = false,
+    temp = [],
+    decoded = "";
   for (let i = 0; i < s.length; i++) {
-    stack.push(s[i]);
-  }
-  while (stack.length) {
-    const curr = stack.pop();
+    const curr = s[i];
     if (curr === "]") {
-      isStore = true;
-      continue;
-    }
-    if (isStore) {
-      temp.push(curr);
+      let temp = "",
+        popped = "";
+      while (popped !== "]") {
+        popped = stack.pop();
+        temp += popped;
+      }
+      const mult = stack.pop();
+      for (let i = 1; i <= mult; i++) {
+        decoded += temp;
+      }
+      decoded = decoded.split("").reverse().join("");
     }
   }
 };
