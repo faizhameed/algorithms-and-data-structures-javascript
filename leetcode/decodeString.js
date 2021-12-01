@@ -14,7 +14,11 @@ const decodeString = (s) => {
     let num = "";
     curr = stack.pop();
 
-    while (!Number.isNaN(Number(curr))) {
+    while (!isNaN(Number(curr))) {
+      /*
+       * if this is a number for example '3' then we run while loop once else if it was '23' we run while loop twice
+       * first num=3, num becomes 23
+       */
       num = curr + num;
       curr = stack.pop();
     }
@@ -23,3 +27,5 @@ const decodeString = (s) => {
   }
   return stack.join("");
 };
+
+console.log(decodeString("2[ab2[d]]"));
