@@ -5,6 +5,7 @@ var alienOrder = function (words) {
   for (let i = 0; i < words.length - 1; i++) {
     const first = words[i];
     const second = words[i + 1];
+    if (first.length > second.length && first.startsWith(second)) return "";
     const minLength = Math.min(first.length, second.length);
     for (let j = 0; j < minLength; j++) {
       if (first[j] !== second[j]) {
@@ -38,6 +39,6 @@ var alienOrder = function (words) {
   return result.reverse().join("");
 };
 
-const words = ["wrt", "wrf", "er", "ett", "rftt"];
+const words = ["abc", "ab"];
 
 console.log(alienOrder(words));
