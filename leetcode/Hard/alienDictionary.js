@@ -20,15 +20,16 @@ var alienOrder = function (words) {
   //regular graph dfs
 
   const dfs = (char) => {
-    if (visiting.has(char)) return false;
-    if (visited.has(char)) return true;
+    if (visiting.has(char)) return false; // are we still visiting this, if yes then this is a cycle
+    if (visited.has(char)) return true; // we already checked this and need not check again
     visiting.add(char);
     for (let n of graph[char]) {
+      // if any of the the val pointed form a cycle then return false
       if (!dfs(n)) return false;
     }
-    visiting.delete(char);
-    visited.add(char);
-    result.push(char);
+    visiting.delete(char); // delete the char after the visiting process done
+    visited.add(char); // add to the visited point
+    result.push(char); // now push the least significant first and in the end we reverse the order
     return true;
   };
   for (const [key, val] of Object.entries(graph)) {
