@@ -51,3 +51,16 @@ function canJumpOptimal(nums) {
   }
   return false;
 }
+
+var canJumpDp = function (nums) {
+  if (nums[0] === 0 && nums.length > 1) return false;
+  let prev = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    // can the prev reach here
+    if (prev < i) {
+      return false;
+    }
+    prev = Math.max(prev, nums[i] + i);
+  }
+  return true;
+};
