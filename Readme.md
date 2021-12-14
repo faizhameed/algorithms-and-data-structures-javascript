@@ -388,4 +388,4 @@ myLinkedList.insert(2, 99)
 
 Note please check inside folders to see more
 
-Connect with me at [LinkedIn](https://)
+Connect with me at [LinkedIn](https://www.linkedin.com/in/faizhameed/)
