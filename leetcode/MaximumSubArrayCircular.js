@@ -18,6 +18,6 @@ function maxSubArrCircular(nums) {
   //check if all elements less than 0, if yes the we simply return maxSum
   return maxSum > 0 ? max(maxSum, totalSum - minSum) : maxSum;
 }
-const nums = [15, -3, -4, -30, 5, 5, 2, -7];
+const nums = [0, 2, -2];
 
 console.log(maxSubArrCircular(nums));
