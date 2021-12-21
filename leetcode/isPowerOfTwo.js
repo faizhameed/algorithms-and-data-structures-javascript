@@ -9,3 +9,7 @@ var isPowerOfTwo = function (n) {
   }
   return false;
 };
+
+function isPowerTwo(n) {
+  return n <= 0 ? false : !(n & (n - 1));
+}
