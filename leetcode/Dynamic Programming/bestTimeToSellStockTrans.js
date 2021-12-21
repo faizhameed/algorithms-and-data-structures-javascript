@@ -1,13 +1,14 @@
 // Best Time to Buy and Sell Stock with Transaction Fee
 
 var maxProfit = function (prices, fee) {
-  const n = prices.length;
-  const dp = new Array(n).fill(0);
-  let max = -Infinity;
-  dp[0] = [-prices[0]];
-  for (let i = 1; i < n; i++) {
-    //
+  if (prices.length === 0) return 0;
+  let cash = 0,
+    hold = -prices[0];
+  for (let i = 1; i < prices.length; i++) {
+    cash = Math.max(cash, hold + prices[i] - fee);
+    hold = Math.max(hold, cash - prices[i]);
   }
+  return cash;
 };
 
 const prices = [1, 3, 2, 8, 4, 9],
