@@ -24,7 +24,6 @@ var maxProfit = function (prices) {
 
 var maxProfit = function (prices) {
   //Space optimizes
-  const n = prices.length;
   if (n <= 1) return 0;
   let noStock = 0;
   let inHand = -prices[0];
@@ -33,7 +32,7 @@ var maxProfit = function (prices) {
   for (let i = 1; i < n; i++) {
     // no stock if we didnt buy or if we sold the day before
     const prevNoStock = noStock;
-    const prevInHand = inhand;
+    const prevInHand = inHand;
     noStock = Math.max(sold, prevNoStock);
     // inhand if we bought today or was already in hand
     inHand = Math.max(prevInHand, prevNoStock - prices[i]);
