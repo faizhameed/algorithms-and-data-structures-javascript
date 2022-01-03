@@ -20,8 +20,8 @@ var deserialize = function (data) {
     if (Number(preOrder[0]) < lower || Number(preOrder[0]) > upper) return null;
     if (preOrder.length === 0) return null;
     const root = new TreeNode(preOrder.shift());
-    root.left = dfs(root.left, upper);
-    root.right = dfs(lower, root.right);
+    root.left = recur(lower, root.val);
+    root.right = recur(root.val, upper);
     return root;
   }
   return recur(-Infinity, Infinity);
