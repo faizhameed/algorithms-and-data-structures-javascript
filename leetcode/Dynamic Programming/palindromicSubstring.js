@@ -24,7 +24,7 @@ function isPalindrome(str) {
 
 /* Optimal method   using DP*/
 
-function countSubstrings(s) {
+function countSubstringsDP(s) {
   const n = s.length;
   const dp = new Array(n).fill(0).map(() => new Array(n).fill(false));
   let count = 0;
@@ -50,4 +50,28 @@ function countSubstrings(s) {
   return count;
 }
 
-console.log(countSubstrings("bbc"));
+/* Best method */
+function countSubstrings(s) {
+  const n = s.length;
+  let count = 0;
+  //expand around center
+  for (let i = 0; i < s.length; i++) {
+    count += isPalindromeSub(i, i);
+    //even palindromes
+    count += isPalindromeSub(i, i + 1);
+  }
+  function isPalindromeSub(lo, hi) {
+    let count = 0;
+    while (lo >= 0 && hi < n) {
+      if (s[lo] !== s[hi]) break;
+      lo--;
+      hi++;
+      count++;
+    }
+    return count;
+  }
+
+  return count;
+}
+
+console.log(countSubstrings("baac"));
