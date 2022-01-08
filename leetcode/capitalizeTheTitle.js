@@ -4,7 +4,7 @@ var capitalizeTitle = function (title) {
     const word = words[i];
     if (word.length > 2) {
       words[i] = [
-        ...word.split("").slice(0, 1).join("").toUpperCase(),
+        ...word[0].toUpperCase(),
         ...word.split("").slice(1).join("").toLowerCase(),
       ].join("");
     } else {
