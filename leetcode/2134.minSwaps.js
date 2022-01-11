@@ -6,14 +6,14 @@ function minSwaps(nums) {
   for (const v of nums) {
     if (v === 1) ones++;
   }
-  console.log("ones", ones);
+  // console.log("ones", ones);
   let i = 0;
   for (i = 0; i < ones; i++) {
     if (nums[i] === 1) {
       maxOnesWindow++;
     }
   }
-  console.log("maxWindow", maxOnesWindow, i);
+  // console.log("maxWindow", maxOnesWindow, i);
   let onesIncurrWindow = maxOnesWindow;
   for (; i < n + ones; i++) {
     onesIncurrWindow += nums[i % n] - nums[i - ones];
