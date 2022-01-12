@@ -20,23 +20,19 @@ function maximumScore(nums, multipliers) {
   return dp(0, 0);
 }
 
-const maxScore = () => {
-  const dp = new Array(1000).fill(-1).map(() => new Array(1000).fill(-1));
-
-  const helper = (lo = 0, m = 0) => {
-    if (m >= multipliers.length) {
-      return 0;
+const maxScoreBottomUp = (nums, multipliers) => {
+  const dp = new Array(1000).fill(0).map(() => new Array(1000).fill(0));
+  const m = multipliers.length;
+  for (let i = m - 1; i >= 0; i--) {
+    for (let left = i; i >= 0; left--) {
+      let takeFirst = multipliers[i] * nums[left] + dp[left + 1][i + 1];
+      let takeLast =
+        multipliers[i] * nums[nums.length - 1 - (i - left)] + dp[left][i + 1];
+      dp[i][left] = Math.max(takeFirst, takeLast);
     }
-    if (dp[lo][m] !== -1) {
-      return dp[lo][m];
-    }
-    let takeFirst = multipliers[m] * nums[lo] + helper(lo + 1, m + 1);
-    let takeLast =
-      multipliers[m] * nums[nums.length - 1 - (m - lo)] + helper(lo, m + 1);
-    return (dp[lo][m] = Math.max(takeFirst, takeLast));
-  };
+  }
 
-  return helper();
+  return dp[0][0];
 };
 
 const nums = [1, 2, 3],
