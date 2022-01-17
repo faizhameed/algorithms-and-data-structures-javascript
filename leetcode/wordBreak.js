@@ -27,8 +27,8 @@ function wordBreakBrute(s, wordDict, curr = "") {
   return false;
 }
 
-const s = "applepenapple",
-  wordDict = ["apple", "pen"];
+const s = "leetcode",
+  wordDict = ["leet", "code"];
 // output true
 
 //  optimized solution
@@ -58,4 +58,29 @@ const wordBreak = (s, wordDict) => {
   return false;
 };
 
-console.log(wordBreak(s, wordDict));
+var wordBreakTop = function (s, wordDict) {
+  // if there is no word that is available in s return false
+  const dp = new Array(s.length).fill(-1);
+  function helper(i) {
+    if (i < 0) return true;
+
+    if (dp[i] === -1) {
+      for (const word of wordDict) {
+        if (i >= word.length - 1 && helper(i - word.length)) {
+          const curr = s.substring(i - word.length + 1, i + 1);
+          if (curr === word) {
+            dp[i] = 1;
+            break;
+          }
+        }
+      }
+      if (dp[i] === -1) {
+        dp[i] = 0;
+      }
+    }
+    return dp[i] === 1;
+  }
+
+  return helper(s.length - 1);
+};
+console.log(wordBreakTop(s, wordDict));
