@@ -34,6 +34,33 @@ function coinChange(coins, amount) {
   return dp[amount] === Infinity ? -1 : dp[amount];
 }
 
+/* Top Down approach */
+
+function coinChange(coins, amount) {
+  if (amount < 1) return 0;
+
+  return helper(coins, amount, new Array(amount).fill(0));
+}
+
+function helper(coins, rem, dp) {
+  if (rem < 0) return -1;
+
+  if (rem === 0) return 0;
+
+  if (dp[rem - 1] !== 0) return dp[rem - 1]; // we have a stored value
+
+  let min = Infinity;
+  for (const coin of coins) {
+    res = helper(coins, rem - coin, dp);
+    if (res >= 0 && res < min) {
+      min = res + 1; // res plus one addition from the current move
+    }
+  }
+  dp[rem - 1] = min === Infinity ? -1 : min;
+
+  return dp[rem - 1];
+}
+
 const coins = [1, 2, 5],
   amount = 11;
 
