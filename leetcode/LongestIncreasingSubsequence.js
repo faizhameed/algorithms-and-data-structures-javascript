@@ -55,4 +55,4 @@ var lengthOfLIS = function (nums) {
   return sub.length;
 };
 
-console.log(lengthOfLIS([4, 10, 4, 3, 8, 9]));
+console.log(lengthOfLIS([8, 1, 6, 7, 2, 10]));
