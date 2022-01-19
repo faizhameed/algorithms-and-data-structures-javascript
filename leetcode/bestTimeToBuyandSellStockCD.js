@@ -42,6 +42,25 @@ var maxProfit = function (prices) {
   return Math.max(noStock, sold);
 };
 
+/* DP different approach */
+
+var maxProfit2 = function (prices) {
+  const n = prices.length;
+  const MP = new Array(n + 2).fill(0);
+
+  for (let i = n - 1; i >= 0; i--) {
+    let C1 = 0;
+    for (let sell = i + 1; sell < n; sell++) {
+      const profit = prices[sell] - prices[i] + MP[sell + 2];
+      C1 = Math.max(C1, profit);
+    }
+
+    const C2 = MP[i + 1];
+    MP[i] = Math.max(C1, C2);
+  }
+
+  return MP[0];
+};
 const prices = [1, 2, 3, 0, 2];
 
-console.log(maxProfit(prices));
+console.log(maxProfit2(prices));
