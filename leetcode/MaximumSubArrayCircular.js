@@ -15,9 +15,26 @@ function maxSubArrCircular(nums) {
     minSum = min(curMin, minSum);
     totalSum += a;
   }
+
+  /* Can also be written as
+    const n = nums.length
+    let tempMinSum =nums[0],tempMaxSum=nums[0],maxSubSum=nums[0],minSubSum=nums[0],totalSum =nums[0]
+   
+    for(let i=1;i<nums.length;i++){
+        const curr =nums[i]
+        tempMinSum =curr+ Math.min(tempMinSum,0)
+        minSubSum = Math.min(tempMinSum,minSubSum)
+        tempMaxSum = curr + Math.max(0,tempMaxSum)
+        maxSubSum = Math.max(tempMaxSum,maxSubSum)
+        totalSum+=curr
+    }
+    return maxSubSum>0?Math.max(totalSum-minSubSum,maxSubSum):maxSubSum
+  
+  */
   //check if all elements less than 0, if yes the we simply return maxSum
   return maxSum > 0 ? max(maxSum, totalSum - minSum) : maxSum;
 }
-const nums = [0, 2, -2];
+
+const nums = [5, -3, 5];
 
 console.log(maxSubArrCircular(nums));
