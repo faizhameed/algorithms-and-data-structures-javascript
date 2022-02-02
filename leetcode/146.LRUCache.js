@@ -1,8 +1,9 @@
+/**
+ * @param {number} capacity
+ */
 var LRUCache = function (capacity) {
   this.capacity = capacity;
-  this.cache = {};
-  this.keys = 0;
-  this.updateStack = [];
+  this.cache = new Map();
 };
 
 /**
@@ -10,7 +11,13 @@ var LRUCache = function (capacity) {
  * @return {number}
  */
 LRUCache.prototype.get = function (key) {
-  return this.cache[key] ? this.cache[key] : -1;
+  if (!this.cache.has(key)) {
+    return -1;
+  }
+  const value = this.cache.get(key);
+  this.cache.delete(key);
+  this.cache.set(key, value);
+  return value;
 };
 
 /**
@@ -19,16 +26,17 @@ LRUCache.prototype.get = function (key) {
  * @return {void}
  */
 LRUCache.prototype.put = function (key, value) {
-  if (this.cache[key]) {
-    this.cache[key] = value;
-    this.updateStack.push(key);
-  } else {
-    if (this.keys === this.capacity) {
-      const getNode = this.updateStack.shift();
-    } else {
-      this.keys += 1;
-      this.cache[key] = value;
-      this.updateStack.push(key);
-    }
+  this.cache.delete(key);
+  this.cache.set(key, value);
+  if (this.capacity < this.cache.size) {
+    const toDelete = this.cache.keys().next().value;
+    this.cache.delete(toDelete);
   }
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * var obj = new LRUCache(capacity)
+ * var param_1 = obj.get(key)
+ * obj.put(key,value)
+ */
