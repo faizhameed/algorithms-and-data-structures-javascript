@@ -17,7 +17,6 @@ var findPairsBrute = function (nums, k) {
 
 var findPairs = function (nums, k) {
   let count = 0;
-  const seen = {};
   const map = {};
 
   for (let i = 0; i < nums.length; i++) {
