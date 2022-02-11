@@ -73,3 +73,33 @@ console.log(People);
 var maxNumber = a.reduce(function (prev, cur) {
   return prev > cur ? prev : cur;
 }, -Infinity);
+
+const permutaitionInString = function (s1, s2) {
+  const l1 = s1.length;
+  const l2 = s2.length;
+  for (let i = l1; i <= l2; i++) {
+    if (checkIfPerm(s1, s2.substring(i - l1, i))) {
+      return true;
+    }
+  }
+  return false;
+};
+
+function checkIfPerm(t1, t2) {
+  const hash = {};
+  for (const s of t1) {
+    if (hash[s]) {
+      hash[s] += 1;
+    } else {
+      hash[s] = 1;
+    }
+  }
+  for (const s of t2) {
+    if (!hash[s]) {
+      return false;
+    } else {
+      hash[s]--;
+    }
+  }
+  return true;
+}
