@@ -24,3 +24,5 @@ var minCostII = function (costs) {
     return min;
   }
 };
+
+/* Optimize solution can be found by finding minCOlor and 2nd minColor before caluculating curent DP */
