@@ -43,12 +43,12 @@ class PriorityQueue {
 
   push(value) {
     this._heap.push(value);
-    this._siftUp();
+    this._shiftUp();
 
     return this.size();
   }
 
-  _siftUp() {
+  _shiftUp() {
     let nodeIdx = this.size() - 1;
 
     while (0 < nodeIdx && this._compare(nodeIdx, this._parent(nodeIdx))) {
@@ -63,11 +63,11 @@ class PriorityQueue {
     }
 
     const poppedValue = this._heap.pop();
-    this._siftDown();
+    this.shiftDown();
     return poppedValue;
   }
 
-  _siftDown() {
+  shiftDown() {
     let nodeIdx = 0;
 
     while (
@@ -76,14 +76,14 @@ class PriorityQueue {
       (this._rightChild(nodeIdx) < this.size() &&
         this._compare(this._rightChild(nodeIdx), nodeIdx))
     ) {
-      const greaterChildIdx =
+      const targetChildIdx =
         this._rightChild(nodeIdx) < this.size() &&
         this._compare(this._rightChild(nodeIdx), this._leftChild(nodeIdx))
           ? this._rightChild(nodeIdx)
           : this._leftChild(nodeIdx);
 
-      this._swap(greaterChildIdx, nodeIdx);
-      nodeIdx = greaterChildIdx;
+      this._swap(targetChildIdx, nodeIdx);
+      nodeIdx = targetChildIdx;
     }
   }
 }
