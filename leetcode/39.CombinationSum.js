@@ -1,4 +1,4 @@
-var combinationSum = function (
+var combinationSum1 = function (
   candidates,
   target,
   curr = [],
@@ -23,6 +23,26 @@ var combinationSum = function (
     }
   }
   return paths;
+};
+
+var combinationSum = function (candidates, target) {
+  const res = [],
+    n = candidates.length;
+
+  function helper(sum = 0, curr = [], idx = 0) {
+    if (sum === target) {
+      res.push(curr);
+      return;
+    }
+    for (let i = idx; i < n; i++) {
+      const tSum = candidates[i] + sum;
+      if (tSum <= target) {
+        helper(tSum, [...curr, candidates[i]], i);
+      }
+    }
+  }
+  helper();
+  return res;
 };
 
 console.log(combinationSum([4, 8, 11, 10, 9, 3, 12, 7, 6], 25));
