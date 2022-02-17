@@ -6,7 +6,7 @@ var oddEvenJumps = function (A) {
       .slice()
       .map((val, i) => [val, i])
       .sort(cb)
-      .map(([, i]) => i);
+      .map((v) => v[1]);
 
   const makeOddOrEvenNext = (arr) => {
     let result = Array(n).fill(null);
@@ -14,6 +14,10 @@ var oddEvenJumps = function (A) {
 
     for (let i of arr) {
       while (stack.length && i > stack[stack.length - 1]) {
+        // here i will be just largest for incase of Odd jump for the last element in the stack
+        // so we store the lastElement in stack as result which denotes where we should jump if I was to
+        //make an odd jump
+        // similary the same thing happen for even jump which is the just largest
         result[stack.pop()] = i;
       }
       stack.push(i);
@@ -29,6 +33,8 @@ var oddEvenJumps = function (A) {
   // last item 4, after sort will be positioned at 4th index
   // returns [2, 3, 0, 1, 4]
   const smallestItemPosition = sorted(A, ([a], [b]) => a - b);
+  // [a] and [b] gives the first element of array group and we will compare with it and sort
+
   //For [2,3,1,1,4], returns [1, 4, 3, 4, null]
   /*
       In a similar manner, we can deduce that:
@@ -65,6 +71,6 @@ var oddEvenJumps = function (A) {
   return odd.filter((i) => i !== null).length;
 };
 
-const arr = [10, 13, 12, 14, 15];
+const arr = [2, 3, 1, 1, 4];
 
 console.log(oddEvenJumps(arr));
