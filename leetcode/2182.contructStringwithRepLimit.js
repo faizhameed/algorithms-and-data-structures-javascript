@@ -5,7 +5,6 @@
 
 */
 var repeatLimitedString = function (s, repeatLimit) {
-  console.log(s.length);
   const map = {};
   for (const ch of s) {
     map[ch] = map[ch] ? (map[ch] += 1) : (map[ch] = 1);
@@ -18,7 +17,6 @@ var repeatLimitedString = function (s, repeatLimit) {
       return -1;
     }
   });
-  //   console.log(set, ordered, map);
   let res = "";
   for (let i = 0; i < ordered.length; i++) {
     const str = ordered[i];
@@ -28,11 +26,8 @@ var repeatLimitedString = function (s, repeatLimit) {
       repeat--;
       map[str] -= 1;
       if (map[str] > 0 && repeat === 0) {
-        let j = i;
-        while (j < ordered.length - 1 && map[ordered[j + 1]] === 0) {
-          j++;
-        }
-        // console.log(map, i, ordered);
+        let j = nextValue(i);
+
         if (j < ordered.length - 1 && map[ordered[j + 1]] > 0) {
           res += ordered[j + 1];
           repeat = repeatLimit;
@@ -41,7 +36,14 @@ var repeatLimitedString = function (s, repeatLimit) {
       }
     }
   }
-  console.log(res.length);
+
+  function nextValue(index) {
+    while (index < ordered.length - 1 && map[ordered[index + 1]] === 0) {
+      // use priorityqueue to find the next largest instead of this loop
+      index++;
+    }
+    return index;
+  }
   return res;
 };
 
