@@ -59,3 +59,29 @@ var cloneGraph = function (node) {
   }
   return traverse(node);
 };
+
+/* My own way */
+var cloneGraph = function (node) {
+  if (!node) return null;
+  const cloned = new Node(node.val);
+  const clonedNodes = new Map();
+  // lets visit all nodes
+  function dfs(node, cloneCurr) {
+    if (node === null) {
+      return;
+    }
+    node.visited = true;
+    clonedNodes.set(node.val, cloneCurr);
+    for (const neighbor of node.neighbors) {
+      const newNode = new Node(neighbor.val);
+      if (!neighbor.visited) {
+        cloneCurr.neighbors.push(newNode);
+        dfs(neighbor, newNode);
+      } else {
+        cloneCurr.neighbors.push(clonedNodes.get(newNode.val));
+      }
+    }
+  }
+  dfs(node, cloned);
+  return cloned;
+};
