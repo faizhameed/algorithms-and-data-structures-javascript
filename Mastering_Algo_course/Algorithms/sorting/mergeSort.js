@@ -16,17 +16,35 @@ function merge(left, right) {
   let leftIndex = 0,
     rightIndex = 0,
     result = [];
+  // while (leftIndex < left.length && rightIndex < right.length) {
+  //   if (left[leftIndex] < right[rightIndex]) {
+  //     result.push(left[leftIndex]);
+  //     leftIndex++;
+  //   }
+  //   if (left[leftIndex] > right[rightIndex]) {
+  //     result.push(right[rightIndex]);
+  //     rightIndex++;
+  //   }
+  // }
+  // return [...result, ...left.slice(leftIndex), ...right.slice(rightIndex)];
   while (leftIndex < left.length && rightIndex < right.length) {
-    if (left[leftIndex] < right[rightIndex]) {
+    if (left[leftIndex] <= right[rightIndex]) {
       result.push(left[leftIndex]);
       leftIndex++;
-    }
-    if (left[leftIndex] > right[rightIndex]) {
+    } else {
       result.push(right[rightIndex]);
       rightIndex++;
     }
   }
-  return [...result, ...left.slice(leftIndex), ...right.slice(rightIndex)];
+  while (leftIndex < left.length) {
+    result.push(left[leftIndex]);
+    leftIndex++;
+  }
+  while (rightIndex < right.length) {
+    result.push(right[rightIndex]);
+    rightIndex++;
+  }
+  return [...result];
 }
 
 const answer = mergeSort(numbers);
