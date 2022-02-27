@@ -24,7 +24,10 @@ var shortestPathLength = function (graph) {
       if ((mask & (1 << neighbor)) !== 0) {
         // for eg 1101 and node 2 ,so 1<<2 ==100 so 1101 & 100 will give 100
         const alreadyVisited = dp(neighbor, mask);
+        // alreadyVisited this neighbor that means we need not change the mask, it will be same
         const notVisited = dp(neighbor, mask ^ (1 << node));
+        // here we are checking a scenario if we haven;t visited the neighbouring node yet,
+        //for eg 01^10 will become 11 and 11^10 will become 01
         const best = Math.min(alreadyVisited, notVisited);
         cache[node][mask] = Math.min(best + 1, cache[node][mask]);
       }
