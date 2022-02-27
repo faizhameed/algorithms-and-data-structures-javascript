@@ -7,7 +7,7 @@ var minimumTime = function (time, totalTrips) {
     return a;
   }
 
-  let hi = 1000000000000;
+  let hi = 100000000000000;
   let low = 0;
   while (hi > low) {
     const mid = Math.floor(low + (hi - low) / 2);
