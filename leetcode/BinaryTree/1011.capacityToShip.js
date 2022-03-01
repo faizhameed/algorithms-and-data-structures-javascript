@@ -1,7 +1,7 @@
 var shipWithinDays = function (weights, days) {
   // weights.sort((a,b)=>a-b)
-  let lo = Math.max(...weights),
-    hi = weights.reduce((acc, cur) => acc + cur, 0);
+  let lo = Math.max(...weights), // thing why?
+    hi = weights.reduce((acc, cur) => acc + cur, 0); // TW?
 
   while (lo < hi) {
     const mid = Math.floor(lo + (hi - lo) / 2);
