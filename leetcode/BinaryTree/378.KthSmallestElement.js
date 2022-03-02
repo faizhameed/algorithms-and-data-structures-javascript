@@ -1,7 +1,7 @@
 var kthSmallest = function (matrix, k) {
   const n = matrix.length;
   let lo = matrix[0][0],
-    hi = matrix[n - 1][n - 1] + 1;
+    hi = matrix[n - 1][n - 1];
   while (lo < hi) {
     const mid = Math.floor(lo + (hi - lo) / 2);
     let count = 0;
