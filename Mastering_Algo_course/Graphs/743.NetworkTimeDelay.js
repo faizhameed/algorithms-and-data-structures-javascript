@@ -39,3 +39,38 @@ const networkTimeDelay = (times, n, k) => {
   const ans = Math.max(...distances);
   return ans === Infinity ? -1 : ans;
 };
+
+/* DFS Approach */
+var networkDelayTime = function (times, n, k) {
+  const adjList = new Array(n + 1).fill(0).map(() => []);
+  for (const time of times) {
+    const src = time[0],
+      dest = time[1],
+      timeTaken = time[2];
+    adjList[src].push({ dest, timeTaken });
+  }
+
+  for (const adj of adjList) {
+    adj.sort((a, b) => a.timeTaken - b.timeTaken);
+  }
+
+  const signalReceivedAt = new Array(n + 1).fill(Infinity);
+
+  function dfs(node, currTime) {
+    if (currTime >= signalReceivedAt[node]) {
+      return;
+    }
+    signalReceivedAt[node] = currTime;
+    for (const v of adjList[node]) {
+      const { dest, timeTaken } = v;
+      dfs(dest, timeTaken + currTime);
+    }
+  }
+
+  dfs(k, 0);
+  let maxTime = 0;
+  for (let i = 1; i < n + 1; i++) {
+    maxTime = Math.max(maxTime, signalReceivedAt[i]);
+  }
+  return maxTime === Infinity ? -1 : maxTime;
+};
