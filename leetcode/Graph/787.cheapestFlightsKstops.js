@@ -28,3 +28,31 @@ var findCheapestPrice = function (n, flights, src, dst, k) {
   dfs(src, 0, 0);
   return minPrice === Infinity ? -1 : minPrice;
 };
+
+var findCheapestPrice = function (n, flights, src, dst, k) {
+  const adjList = Array(n)
+    .fill(0)
+    .map(() => []);
+
+  for (const [start, end, cost] of flights) {
+    adjList[start].push([end, cost]);
+  }
+
+  const destStop = new Array(n).fill(null);
+
+  const queue = [[src, 0, k + 1]];
+
+  while (queue.length) {
+    const [curr, cost, stops] = queue.pop();
+    destStop[curr] = stops;
+    if (curr === dst) return cost;
+    if (stops <= 0) continue;
+    for (const [nextD, nextC] of adjList[curr]) {
+      const arrivalT = nextC + cost;
+      if (destStop[nextD] !== null && destStop[nextD] >= stops - 1) continue;
+      queue.push([nextD, arrivalT, stops - 1]);
+    }
+    queue.sort((a, b) => b[1] - a[1]);
+  }
+  return -1;
+};
