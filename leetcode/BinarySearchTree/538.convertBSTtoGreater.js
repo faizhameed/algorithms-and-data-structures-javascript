@@ -7,7 +7,7 @@ var convertBST = function (root) {
       node.val = sum;
       dfs(node.left);
     }
-    return root;
+    return node;
   }
   dfs(root);
   return root;
