@@ -30,9 +30,10 @@ function partition(array, pivot, left, right) {
 }
 
 function swap(array, firstIndex, secondIndex) {
-  var temp = array[firstIndex];
-  array[firstIndex] = array[secondIndex];
-  array[secondIndex] = temp;
+  [array[firstIndex], array[secondIndex]] = [
+    array[secondIndex],
+    array[firstIndex],
+  ];
 }
 
 //Select first and last index as 2nd and 3rd parameters
