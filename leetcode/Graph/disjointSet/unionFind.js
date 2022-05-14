@@ -7,11 +7,26 @@ class UnionFind {
       this.rank[i] = 1;
     }
   }
+  /* 
+  
+  basic implementation of find disjoin set
+
+  find(x){
+      while(this.root[x]!==x){
+          x =this.root[x]
+      }
+      return x
+
+
+  } */
+  /*
+   * Optimised for path compression
+   */
   find(x) {
-    while (x !== this.root[x]) {
-      x = this.root[x];
+    if (x === this.root[x]) {
+      return x;
     }
-    return x;
+    return (this.root[x] = this.find(this.root[x]));
   }
   union(x, y) {
     /*
