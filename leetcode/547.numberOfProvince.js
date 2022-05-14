@@ -40,10 +40,71 @@ const findCircleNum = (isConnected) => {
   return provinceCount;
 };
 
-console.log(
-  findCircleNum([
-    [1, 1, 0],
-    [1, 1, 0],
-    [0, 0, 1],
-  ])
-);
+const isConnected = [
+  [1, 1, 0],
+  [1, 1, 0],
+  [0, 0, 1],
+];
+
+console.log(findCircleNum(isConnected));
+
+// 2nd Approach with disjoint set
+
+class UnionFind {
+  constructor(size) {
+    this.root = new Array(size);
+    this.rank = new Array(size).fill(1);
+
+    for (let i = 0; i < size; i++) {
+      this.root[i] = i;
+    }
+    this.count = size;
+  }
+
+  find(x) {
+    if (x === this.root[x]) {
+      return x;
+    }
+
+    return (this.root[x] = this.find(this.root[x]));
+  }
+
+  union(x, y) {
+    const rootX = this.find(x);
+    const rootY = this.find(y);
+
+    if (rootX !== rootY) {
+      if (this.rank[rootX] > this.rank[rootY]) {
+        this.root[rootY] = rootX;
+      } else if (this.rank[rootX] < this.rank[rootY]) {
+        this.root[rootX] = rootY;
+      } else {
+        this.root[rootY] = rootX;
+        this.rank[rootX] += 1;
+      }
+      this.count--;
+    }
+  }
+
+  getCount() {
+    return this.count;
+  }
+}
+
+function findCircleNum2(isConnected) {
+  if (isConnected === null || isConnected.length === 0) {
+    return 0;
+  }
+  const size = isConnected.length;
+  const uf = new UnionFind(size);
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      if (isConnected[i][j]) {
+        uf.union(i, j);
+      }
+    }
+  }
+  return uf.getCount();
+}
+
+console.log(findCircleNum2(isConnected));
