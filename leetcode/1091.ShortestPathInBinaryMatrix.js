@@ -20,6 +20,7 @@ var shortestPathBinaryMatrix = function (grid) {
   while (queue.length) {
     const curr = queue.shift();
     const step = curr[2];
+    if (curr[0] === n - 1 && curr[1] === n - 1) return visited[n - 1][n - 1];
     for (const [r, c] of directions) {
       const row = r + curr[0];
       const col = c + curr[1];
@@ -33,5 +34,5 @@ var shortestPathBinaryMatrix = function (grid) {
       }
     }
   }
-  return visited[n - 1][n - 1] === Infinity ? -1 : visited[n - 1][n - 1];
+  return -1;
 };
