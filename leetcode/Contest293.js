@@ -95,23 +95,16 @@ var largestCombination = function (candidates) {
 };
 
 var largestCombination = function (candidates) {
-  let max = 1;
-  let comb = 0;
-  for (let i = 0; i < candidates.length; i++) {
-    let curr = candidates[i],
-      j = i;
-    while (j < candidates.length) {
-      if ((curr & candidates[j]) === 0) {
-        j++;
-        continue;
-      }
-      comb++;
-      curr &= candidates[j];
-      max = Math.max(comb, max);
-      j++;
+  const indexArr = Array(24).fill(0);
+
+  for (let candidate of candidates) {
+    let index = 0;
+    while (candidate > 0) {
+      if ((candidate & 1) === 1) indexArr[index] += 1;
+      candidate >>>= 1;
+      index++;
     }
-    comb = 0;
   }
 
-  return max;
+  return Math.max(...indexArr);
 };
