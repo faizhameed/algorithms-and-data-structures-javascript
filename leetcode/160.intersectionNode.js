@@ -17,3 +17,16 @@ var getIntersectionNode = function (headA, headB) {
 
   return null;
 };
+
+//o(m+n) solution with o(1) space
+
+var getIntersectionNode = function (headA, headB) {
+  let currA = headA,
+    currB = headB;
+
+  while (currA !== currB) {
+    currA = currA === null ? headB : currA.next;
+    currB = currB === null ? headA : currB.next;
+  }
+  return currA;
+};
