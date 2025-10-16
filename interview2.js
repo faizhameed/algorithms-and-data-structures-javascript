@@ -4,7 +4,7 @@ function getA() {
 function getB(callback) {
   setTimeout(() => {
     callback("B");
-  }, 10);
+  }, 1000);
 }
 
 function getC() {
@@ -12,13 +12,22 @@ function getC() {
 }
 
 async function getABC() {
-  //only make changes here
-
-  const getBModified = (func) => {
-    return new Promise((resolve) => func(resolve));
-  };
-  return Promise.all([getA(), getBModified(getB), getC()]);
+  return Promise.all([getA(), new Promise((resolve) => getB(resolve)), getC()]);
 }
 
-getABC().then((arr) => console.log(arr));
+getABC().then((result) => console.log(result));
 // expected output [ 'A', 'B', 'C' ]
+
+// Some other examples
+
+// Example 1
+Promise.resolve(getA())
+  .then((result) => console.log(result))
+  .then(() => {
+    return new Promise((resolve) => getB(resolve));
+  })
+  .then((result) => console.log(result))
+  .then(() => {
+    return getC();
+  })
+  .then((result) => console.log(result));
