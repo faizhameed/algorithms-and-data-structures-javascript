@@ -1,4 +1,4 @@
-var kClosest = function (points, k) {
+var kClosest1 = function (points, k) {
   const allPoints = [],
     map = [];
   for (let i = 0; i < points.length; i++) {
@@ -18,6 +18,28 @@ var kClosest = function (points, k) {
   }
 
   return allPoints;
+};
+
+// using MinPriorityQueue
+
+const kClosest = (points, k) => {
+  const pq = new MinPriorityQueue({ priority: (x) => x[0] }); // MinPriorityQueue to be defined
+  let index = 0;
+  for (const point of points) {
+    const x1 = point[0];
+    const x2 = point[1];
+    const sqr = x1 * x1 + x2 * x2;
+    pq.enqueue = [sqr, index];
+    index++;
+  }
+
+  const result = [];
+  for (let i = 0; i < k; i++) {
+    const curr = pq.dequeue().element[1];
+    result.push(points[curr]);
+  }
+
+  return result;
 };
 
 const points = [
