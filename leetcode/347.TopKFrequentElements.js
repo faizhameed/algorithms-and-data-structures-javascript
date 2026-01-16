@@ -1,4 +1,4 @@
-var topKFrequent = function (nums, k) {
+var _topKFrequent = function (nums, k) {
   const map = {};
 
   for (let i = 0; i < nums.length; i++) {
@@ -19,8 +19,6 @@ var topKFrequent = function (nums, k) {
   return res;
 };
 
-console.log(topKFrequent([1, 2, 1, 2, 1, 3], 2));
-
 // optimized
 var topKFrequent = function (nums, k) {
   const hashMap = {};
@@ -31,9 +29,8 @@ var topKFrequent = function (nums, k) {
     }
     hashMap[num] += 1;
   }
-
   const arr = Array(nums.length + 1)
-    .fill(0)
+    .fill(null)
     .map(() => []);
   for (const [key, val] of Object.entries(hashMap)) {
     arr[val].push(key);
@@ -51,3 +48,4 @@ var topKFrequent = function (nums, k) {
   }
   return res;
 };
+console.log(topKFrequent([1, 2, 1, 2, 1, 2, 3, 1, 3, 2], 2));
