@@ -42,6 +42,37 @@ var maxAreaOfIsland = function (grid) {
   return maxArea;
 };
 
+// recursive solution
+
+var maxAreaOfIslandRecursive = function (grid) {
+  const m = grid.length;
+  const n = grid[0].length;
+
+  const seen = new Array(m).fill(0).map(() => new Array(n).fill(false));
+  let maxArea = 0;
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      maxArea = Math.max(maxArea, checkArea(i, j));
+    }
+  }
+
+  function checkArea(i, j) {
+    if (i < 0 || i >= m || j < 0 || j >= n || seen[i][j] || grid[i][j] === 0) {
+      return 0;
+    }
+    seen[i][j] = true;
+    return (
+      1 +
+      checkArea(i - 1, j) +
+      checkArea(i + 1, j) +
+      checkArea(i, j - 1) +
+      checkArea(i, j + 1)
+    );
+  }
+
+  return maxArea;
+};
+
 const grid = [
   [1, 1, 0, 0, 0],
   [1, 1, 0, 0, 0],
